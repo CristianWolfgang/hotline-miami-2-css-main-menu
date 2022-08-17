@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
+    <style>
+        @font-face {
+            font-family: beyond;
+            src: url(Beyond.ttf);
+        }
+        @font-face {
+            font-family: digitalism;
+            src: url(D3DigitalismI.ttf);
+        }
+        @font-face{
+            font-family: justice;
+            src: url(justiceout.ttf);
+        }
+        @font-face{
+            font-family:shoguns-clan;
+            src:url(Shoguns-Clan.ttf);
+        }
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing: border-box;
+        }
+        
+        :root{
+            --name-color:#DADF79;
+            --text-shadow:#C1715E;
+            --subtitle:#027767;
+            --number:#11a85e;
+            --bg:#A70031;
+            --text-shadow2:#7b25b4;
+            --building-shadow:#00000096;
+            --text-shadow-green:#339939;
+            --text-shadow-purple:#cf04e1;
+        }
+        html{
+            font-size: 16px;
+            overflow-x: hidden;
+        }
+        body{
+            overflow-x:hidden;
+            background-color: var(--bg);
+            /* background-image: linear-gradient(var(--bg), #0011a7); */
+            position:relative;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        animation:bg 3s infinite linear alternate;
+        }
+        @keyframes bg{
+            100%{
+                background-color: #0011a7;
+            }
+        }
+        .container{
+            position: absolute;
+            width: 100%;
+            top: 0;
+            margin-top:5vh;
+        }
+        
+        .title-container,
+        .game-name,
+        .selection{
+            
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+            animation-timing-function: linear;
+        }
+        .title-container{
+            animation-name: title;
+            animation-duration: 6s;
+        }
+        @keyframes title {
+            0%{
+                transform: rotate(3deg);
+            }
+            100%{
+                transform: rotate(-3deg);
+            }
+        }
+        h1,
+        .game-subtitle{
+            text-align: center;
+            letter-spacing: .5rem;
+        }
+        .game-name{
+            font-family: shoguns-clan;
+            font-size: 7rem;
+            color:var(--name-color);
+            text-shadow: 
+            4px -4px var(--text-shadow),
+            8px -5px var(--text-shadow),
+            12px -6px var(--text-shadow),
+            16px -7px var(--text-shadow),
+            20px -8px var(--text-shadow);
+            animation-name: change-title-color;
+            animation-duration: 3s;
+
+        }
+        @keyframes change-title-color {
+            100%{
+                text-shadow:4px -4px var(--text-shadow2),
+                8px -5px var(--text-shadow2),
+                12px -6px var(--text-shadow2),
+                16px -7px var(--text-shadow2),
+                20px -8px var(--text-shadow2);
+            }
+        }
+        .game-number{
+
+            display: inline-block;
+            font-family: beyond;
+            font-size: 6rem;
+            color: var(--number);
+            transform: rotate(20deg) translate(0,30%);
+            text-shadow: 10px 9px #8A1A11;
+        }
+        .game-subtitle{
+            font-family: digitalism;
+            color: var(--subtitle);
+            text-shadow: 0 2px,
+            4px 5px black,
+            4px 7px black;
+            position: relative;
+            top: -.5em;
+            z-index: -1;
+            font-size: 3em;
+        }
+        .selection{
+            list-style: none;
+            font-family: justice;
+            font-size: 3rem;
+            animation-name:title;
+            animation-duration: 10s;
+            animation-direction: alternate-reverse;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            margin-top: -1.5em;
+            font-style: italic;
+            color:#FF0000;
+            font-weight:bold;
+            color: var(--name-color);
+            text-shadow: 3px 0 ;
+        }
+        .selection li{
+            margin-top:.8em;
+        }
+        .selection input{
+            opacity: 0;
+        }
+        .selection label{
+            transition:text-shadow .1s linear infinite;
+        }
+        .selection input:checked+label{
+            /* text-shadow: 3px 0 #339939,
+                5px 0 #339939,
+                7px 0 #339939; */
+                text-shadow: 3px 0 var(--text-shadow-green),
+                 4px 0 var(--text-shadow-green),
+                  5px 0 var(--text-shadow-green),
+                   6px 0 var(--text-shadow-green),
+                    7px 0 var(--text-shadow-green),
+                     8px 0 var(--text-shadow-green),
+                      9px 0 var(--text-shadow-green),
+                       10px 0 var(--text-shadow-green);
+            animation-name:option-selected;
+            animation-duration: 1s;
+            animation-timing-function: linear;
+            animation-direction: alternate;
+            animation-iteration-count: infinite;
+            
+        }
+        @keyframes option-selected {
+            100%{
+                /* text-shadow: 3px 0 #cf04e1,
+                5px 0 #cf04e1,
+                7px 0 #cf04e1; */
+                
+                text-shadow: 3px 0 var(--text-shadow-purple),
+                 4px 0 var(--text-shadow-purple),
+                  5px 0 var(--text-shadow-purple),
+                   6px 0 var(--text-shadow-purple),
+                    7px 0 var(--text-shadow-purple),
+                     8px 0 var(--text-shadow-purple),
+                      9px 0 var(--text-shadow-purple),
+                       10px 0 var(--text-shadow-purple); 
+            }
+        }
+
+
+        @media only screen and (max-width: 850px) {
+            .game-name{
+                font-size:6.5rem;
+            }
+            .game-number{
+                position: absolute;
+                right: -.5rem;
+                top:1rem;
+            }
+            .game-subtitle{
+                font-size: 2.5em;
+            }
+        }
+        @media only screen and (max-width:706px){
+            .game-name {
+                font-size: 5.5rem;
+            }
+            .game-subtitle{
+                font-size: 2rem;
+            }
+            .game-number{
+                top:.2rem;
+            }
+            .selection{
+                font-size: 2.5rem;
+                margin-top: -.6em;
+            }
+            .selection li{
+                margin-top: .8em;
+            }
+        }
+        @media only screen and (max-width:613px){
+
+            .game-number {
+                right: .5em;
+  bottom: -1em;
+  font-size: 5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="title-container">
+        <h1>
+            <span class="game-name">Hotline Miami</span><span class="game-number">2</span>
+        </h1>
+            <h2 class="game-subtitle">WRONG NUMBER</h2>
+        
+        </div>
+        <ul class="selection">
+            <li><input type="radio" id="op-1" name="option" checked><label for="op-1">NEW GAME</label></li>
+            <li><input type="radio" id="op-2" name="option"> <label for="op-2">OPTIONS</label></li>
+            <li><input type="radio" id="op-3" name="option"><label for="op-3">QUIT GAME</label></li>
+        </ul>
+    </div>
+
+</body>
+</html>
